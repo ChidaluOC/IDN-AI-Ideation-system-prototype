@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Bash(pip --version)",
+      "Bash(npm info:*)",
+      "Bash(pip index:*)",
+      "Bash(mkdir:*)",
+      "Bash(python -m venv .venv)",
+      "Bash(.venv/Scripts/pip install:*)",
+      "Bash(timeout 8 .venv/Scripts/python -c ':*)",
+      "Bash(npm create:*)",
+      "Bash(npm install:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npm run:*)",
+      "Bash(.venv/Scripts/python.exe -c \"import services.ai_service; import services.mock_ai_service; import services.web_search; import routers.ai; print\\('OK'\\)\")",
+      "Bash(.venv/Scripts/python.exe -c \"import services.ai_service; import services.mock_ai_service; import routers.ai; import models.ai; print\\('OK'\\)\")",
+      "Bash(.venv/Scripts/python.exe -c \"import services.ai_service; print\\('OK'\\)\")",
+      "Bash(.venv/Scripts/python -c \"import models.ai; import routers.ai; import services.mock_ai_service; import services.ai_service; print\\('OK'\\)\")",
+      "Bash(node_modules/.bin/tsc --noEmit)",
+      "Read(//tmp/**)"
+    ]
+  }
+}
