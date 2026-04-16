@@ -8,7 +8,6 @@ class NodeType(str, Enum):
     scene = "scene"
     choice = "choice"
     ending = "ending"
-    question = "question"
     note = "note"  # kept for backward-compat with saved projects
 
 
