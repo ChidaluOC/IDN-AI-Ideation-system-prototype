@@ -4,7 +4,7 @@ import { useGraphStore } from '../../store/graphStore'
 import { useAI } from '../../hooks/useAI'
 import type { NodeType, StoryChoice } from '../../types/graph'
 
-const AUTHOR_NODE_TYPES: NodeType[] = ['intro', 'scene', 'choice', 'ending', 'question']
+const AUTHOR_NODE_TYPES: NodeType[] = ['intro', 'scene', 'choice', 'ending']
 
 interface NodeInspectorProps {
   nodeId: string
@@ -185,9 +185,9 @@ export function NodeInspector({ nodeId, onClose, onOpenAIPanel }: NodeInspectorP
           flexShrink: 0,
         }}
       >
-        <span style={{ fontWeight: 600, fontSize: 13, color: '#374151' }}>Node Details</span>
+        <span style={{ fontWeight: 600, fontSize: 13, color: '#374151' }}>Event Details</span>
         <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-          <button onClick={handleDelete} title="Delete node"
+          <button onClick={handleDelete} title="Delete event"
             style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#ef4444', padding: 4 }}>
             <Trash2 size={15} />
           </button>
@@ -213,7 +213,7 @@ export function NodeInspector({ nodeId, onClose, onOpenAIPanel }: NodeInspectorP
             justifyContent: 'space-between',
           }}
         >
-          <span style={{ fontSize: 11, color: '#6b7280', fontWeight: 600 }}>Node ID</span>
+          <span style={{ fontSize: 11, color: '#6b7280', fontWeight: 600 }}>Event ID</span>
           <span style={{ fontSize: 12, color: '#374151', fontFamily: 'monospace', fontWeight: 700 }}>
             #{nodeId}
             {node.data.aiGenerated && (
@@ -222,9 +222,9 @@ export function NodeInspector({ nodeId, onClose, onOpenAIPanel }: NodeInspectorP
           </span>
         </div>
 
-        {/* Node type */}
+        {/* Event type */}
         <label style={labelStyle}>
-          Node type
+          Event type
           <select
             value={localNodeType}
             onChange={(e) => setLocalNodeType(e.target.value as NodeType)}
@@ -240,7 +240,7 @@ export function NodeInspector({ nodeId, onClose, onOpenAIPanel }: NodeInspectorP
         <label style={labelStyle}>
           Title
           <input value={localTitle} onChange={(e) => setLocalTitle(e.target.value)}
-            placeholder="Node title…" style={inputStyle} />
+            placeholder="Event title…" style={inputStyle} />
         </label>
 
         {/* Description */}
@@ -262,7 +262,7 @@ export function NodeInspector({ nodeId, onClose, onOpenAIPanel }: NodeInspectorP
               Content visible to the audience
             </span>
             <textarea value={localBody} onChange={(e) => setLocalBody(e.target.value)}
-              placeholder={isIntro ? 'Introductory text…' : isScene ? 'Scene content…' : 'Content for this node…'}
+              placeholder={isIntro ? 'Introductory text…' : isScene ? 'Scene content…' : 'Content for this event…'}
               rows={6}
               style={{ ...inputStyle, resize: 'vertical', minHeight: 120 }} />
           </label>
@@ -386,8 +386,8 @@ function ChoicesEditor({ choices, onAdd, onUpdateLabel, onRemove, showTargets, o
       {choices.length === 0 && (
         <p style={{ fontSize: 11, color: '#9ca3af' }}>
           {showTargets
-            ? 'No choices yet. Add choices and connect them to target nodes.'
-            : 'No choices yet. Add choices that will appear as buttons to the audience. Targets can be set in the choice node after saving.'}
+            ? 'No choices yet. Add choices and connect them to target events.'
+            : 'No choices yet. Add choices that will appear as buttons to the audience. Targets can be set in the choice event after saving.'}
         </p>
       )}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
@@ -419,7 +419,7 @@ function ChoicesEditor({ choices, onAdd, onUpdateLabel, onRemove, showTargets, o
       </div>
       {!showTargets && choices.length > 0 && (
         <p style={{ fontSize: 11, color: '#9ca3af', marginTop: 8 }}>
-          After saving, a choice node will be created automatically. Open it to connect each choice to a target scene.
+          After saving, a choice event will be created automatically. Open it to connect each choice to a target scene.
         </p>
       )}
     </div>
@@ -444,7 +444,7 @@ function TargetSelector({ choice, otherNodes, onSelect, onCreateAndLink }: Targe
 
   const displayLabel = selectedNode
     ? `→ #${selectedNode.id}  ${selectedNode.data.title || 'Untitled'}`
-    : '— Select target node —'
+    : '— Select target event —'
 
   const filtered = otherNodes.filter((n) => {
     const s = search.toLowerCase()
@@ -516,7 +516,7 @@ function TargetSelector({ choice, otherNodes, onSelect, onCreateAndLink }: Targe
           <div style={{ maxHeight: 180, overflow: 'auto' }}>
             <DropdownOption label="— No connection —" value="__none" onSelect={handleSelect} dimmed />
             {filtered.length === 0 && (
-              <div style={{ padding: '8px 10px', fontSize: 11, color: '#9ca3af' }}>No matching nodes</div>
+              <div style={{ padding: '8px 10px', fontSize: 11, color: '#9ca3af' }}>No matching events</div>
             )}
             {filtered.map((n) => (
               <DropdownOption
@@ -531,8 +531,8 @@ function TargetSelector({ choice, otherNodes, onSelect, onCreateAndLink }: Targe
           </div>
 
           <div style={{ borderTop: '1px solid #f3f4f6', padding: '4px 0' }}>
-            <DropdownOption label="+ Create new Scene node" value="__create_scene" onSelect={handleSelect} accent="#3b82f6" />
-            <DropdownOption label="+ Create new Ending node" value="__create_ending" onSelect={handleSelect} accent="#16a34a" />
+            <DropdownOption label="+ Create new Scene event" value="__create_scene" onSelect={handleSelect} accent="#3b82f6" />
+            <DropdownOption label="+ Create new Ending event" value="__create_ending" onSelect={handleSelect} accent="#16a34a" />
           </div>
         </div>
       )}

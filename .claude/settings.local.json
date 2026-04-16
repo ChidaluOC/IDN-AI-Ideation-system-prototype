@@ -18,7 +18,8 @@
       "Bash(.venv/Scripts/python.exe -c \"import services.ai_service; print\\('OK'\\)\")",
       "Bash(.venv/Scripts/python -c \"import models.ai; import routers.ai; import services.mock_ai_service; import services.ai_service; print\\('OK'\\)\")",
       "Bash(node_modules/.bin/tsc --noEmit)",
-      "Read(//tmp/**)"
+      "Read(//tmp/**)",
+      "Bash(xargs grep *)"
     ]
   }
 }

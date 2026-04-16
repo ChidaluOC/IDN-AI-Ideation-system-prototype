@@ -162,8 +162,8 @@ export function useAI() {
       useGraphStore.getState().proposePendingGraph(mappedNodes, mappedEdges, replace)
       store.setGenerationState('pending_confirmation')
       store.addCoAuthorAIMessage(
-        `Done! I've added ${mappedNodes.length} proposed nodes to the canvas — they're highlighted in orange. ` +
-        `Click on any highlighted node to inspect it. When you're ready, confirm to make the changes permanent, or reject to restore the previous canvas.`
+        `Done! I've added ${mappedNodes.length} proposed events to the canvas — they're highlighted in orange. ` +
+        `Click on any highlighted event to inspect it. When you're ready, confirm to make the changes permanent, or reject to restore the previous canvas.`
       )
     } catch (err) {
       store.setGenerationState('idle')
@@ -177,7 +177,7 @@ export function useAI() {
     useGraphStore.getState().confirmPendingGraph()
     store.setGenerationState('idle')
     store.setPendingScopeRequest(null)
-    store.addCoAuthorAIMessage('Changes confirmed! The new nodes are now a permanent part of your protostory. Feel free to edit them or keep building.')
+    store.addCoAuthorAIMessage('Changes confirmed! The new events are now a permanent part of your protostory. Feel free to edit them or keep building.')
   }, [store])
 
   const rejectGeneration = useCallback(() => {

@@ -257,11 +257,11 @@ export function TrackingPanel({ onClose, onFocusNode }: TrackingPanelProps) {
 
           {/* Stats grid */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8, marginBottom: 20 }}>
-            {statBox(nodes.length, 'Total nodes')}
+            {statBox(nodes.length, 'Total events')}
             {statBox(sceneNodes.length, 'Scenes', '#3b82f6')}
             {statBox(endingNodes.length, 'Endings', '#16a34a')}
-            {statBox(choiceNodes.length, 'Choice nodes', '#ca8a04')}
-            {statBox(introNode ? '✓' : '✗', 'Intro node', introNode ? '#16a34a' : '#ef4444')}
+            {statBox(choiceNodes.length, 'Choice events', '#ca8a04')}
+            {statBox(introNode ? '✓' : '✗', 'Intro event', introNode ? '#16a34a' : '#ef4444')}
             {statBox(
               pathStats
                 ? (pathStats.globalMax ? `${MAX_PATHS}+` : pathStats.totalPaths)
@@ -306,9 +306,9 @@ export function TrackingPanel({ onClose, onFocusNode }: TrackingPanelProps) {
 
           {!introNode && (
             <div style={{ marginBottom: 20, padding: '10px 12px', background: '#fef2f2', border: '1px solid #fecaca', borderRadius: 8 }}>
-              <div style={{ fontSize: 12, fontWeight: 600, color: '#dc2626' }}>No Intro node found</div>
+              <div style={{ fontSize: 12, fontWeight: 600, color: '#dc2626' }}>No Intro event found</div>
               <div style={{ fontSize: 11, color: '#6b7280', marginTop: 4 }}>
-                Add an Intro node to define the beginning of your protostory. Path counting requires a defined start point.
+                Add an Intro event to define the beginning of your protostory. Path counting requires a defined start point.
               </div>
             </div>
           )}
@@ -320,32 +320,32 @@ export function TrackingPanel({ onClose, onFocusNode }: TrackingPanelProps) {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 20 }}>
             <ProblemRow
               count={problems.noIncoming.length}
-              label="Nodes without a preceding node"
-              hint={`Only the Intro node should have no incoming connection. ${problems.noIncoming.length > 0 ? 'These nodes are unreachable.' : 'All good!'}`}
+              label="Events without a preceding event"
+              hint={`Only the Intro event should have no incoming connection. ${problems.noIncoming.length > 0 ? 'These events are unreachable.' : 'All good!'}`}
               nodes={problems.noIncoming}
               onFocusNode={handleFocusNode}
               severity={problems.noIncoming.length === 0 ? 'ok' : 'error'}
             />
             <ProblemRow
               count={problems.noOutgoing.length}
-              label="Nodes without a target connection"
-              hint="Non-ending nodes should connect forward to continue the story."
+              label="Events without a target connection"
+              hint="Non-ending events should connect forward to continue the story."
               nodes={problems.noOutgoing}
               onFocusNode={handleFocusNode}
               severity={problems.noOutgoing.length === 0 ? 'ok' : 'warn'}
             />
             <ProblemRow
               count={problems.choicesWithMissingTargets.length}
-              label="Choice nodes with unconnected choices"
-              hint="Some choices don't have a target node — they won't work in preview."
+              label="Choice events with unconnected choices"
+              hint="Some choices don't have a target event — they won't work in preview."
               nodes={problems.choicesWithMissingTargets}
               onFocusNode={handleFocusNode}
               severity={problems.choicesWithMissingTargets.length === 0 ? 'ok' : 'warn'}
             />
             <ProblemRow
               count={problems.scenesWithMissingChoiceNode.length}
-              label="Scenes in 'choices' mode with no choice node"
-              hint="These scenes are set to 'choices' navigation but have no connected choice node."
+              label="Scenes in 'choices' mode with no choice event"
+              hint="These scenes are set to 'choices' navigation but have no connected choice event."
               nodes={problems.scenesWithMissingChoiceNode}
               onFocusNode={handleFocusNode}
               severity={problems.scenesWithMissingChoiceNode.length === 0 ? 'ok' : 'warn'}

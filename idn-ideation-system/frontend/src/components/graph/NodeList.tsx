@@ -3,21 +3,19 @@ import { Search, X } from 'lucide-react'
 import { useGraphStore } from '../../store/graphStore'
 
 const TYPE_COLORS: Record<string, string> = {
-  intro:    '#f97316',
-  scene:    '#3b82f6',
-  choice:   '#ca8a04',
-  ending:   '#16a34a',
-  question: '#9333ea',
-  note:     '#6b7280',
+  intro:  '#f97316',
+  scene:  '#3b82f6',
+  choice: '#ca8a04',
+  ending: '#16a34a',
+  note:   '#6b7280',
 }
 
 const TYPE_LABELS: Record<string, string> = {
-  intro: 'Intro',
-  scene: 'Scene',
+  intro:  'Intro',
+  scene:  'Scene',
   choice: 'Choice',
   ending: 'Ending',
-  question: 'Question',
-  note: 'Note',
+  note:   'Note',
 }
 
 interface NodeListProps {
@@ -80,7 +78,7 @@ export function NodeList({ onNodeSelect }: NodeListProps) {
         }}
       >
         <div style={{ fontSize: 11, fontWeight: 700, color: '#6b7280', letterSpacing: 0.5, textTransform: 'uppercase', marginBottom: 8 }}>
-          Nodes ({nodes.length})
+          Events ({nodes.length})
         </div>
 
         {/* Search input */}
@@ -124,12 +122,12 @@ export function NodeList({ onNodeSelect }: NodeListProps) {
       <div style={{ flex: 1, overflow: 'auto' }}>
         {nodes.length === 0 && (
           <div style={{ padding: 16, fontSize: 12, color: '#9ca3af', lineHeight: 1.6 }}>
-            No nodes yet. Add nodes using the toolbar above.
+            No events yet. Add events using the toolbar above.
           </div>
         )}
         {nodes.length > 0 && filtered.length === 0 && (
           <div style={{ padding: '14px 12px', fontSize: 12, color: '#9ca3af' }}>
-            No nodes match "{search}"
+            No events match "{search}"
           </div>
         )}
         {filtered.map((node) => {

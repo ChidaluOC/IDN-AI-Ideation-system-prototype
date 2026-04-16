@@ -47,10 +47,10 @@ function ConfirmCard({ onConfirm, onReject, pendingCount }: { onConfirm: () => v
   return (
     <div style={{ padding: '10px 12px', background: '#f0fdf4', borderTop: '1px solid #bbf7d0', flexShrink: 0 }}>
       <p style={{ fontSize: 12, color: '#166534', marginBottom: 4, fontWeight: 600 }}>
-        {pendingCount} proposed node{pendingCount !== 1 ? 's' : ''} on canvas
+        {pendingCount} proposed event{pendingCount !== 1 ? 's' : ''} on canvas
       </p>
       <p style={{ fontSize: 11, color: '#166534', marginBottom: 8 }}>
-        Highlighted in orange. Click any node to inspect. Confirm to keep or reject to restore the previous canvas.
+        Highlighted in orange. Click any event to inspect. Confirm to keep or reject to restore the previous canvas.
       </p>
       <div style={{ display: 'flex', gap: 6 }}>
         <button
@@ -414,9 +414,9 @@ export function AIPanel({ collapsed, onToggle }: AIPanelProps) {
                       {[
                         'What is an IDN?',
                         'What is a protostory?',
-                        'How do I create a new scene node?',
-                        'What is the difference between a choice node and a scene node?',
-                        'How do I connect two nodes?',
+                        'How do I create a new scene event?',
+                        'What is the difference between a choice event and a scene event?',
+                        'How do I connect two events?',
                         'What makes a good branching narrative?',
                       ].map((q) => (
                         <button
@@ -462,7 +462,7 @@ export function AIPanel({ collapsed, onToggle }: AIPanelProps) {
                 <div style={{ textAlign: 'center', paddingTop: 24 }}>
                   <Lightbulb size={24} color="#e5e7eb" style={{ margin: '0 auto 12px' }} />
                   <p style={{ fontSize: 12, color: '#9ca3af', lineHeight: 1.7 }}>
-                    Select a node on the canvas to automatically receive AI branch suggestions for that node.
+                    Select an event on the canvas to automatically receive AI branch suggestions for that event.
                   </p>
                 </div>
               ) : selectedNodeId && isLoading && activeSuggestions.length === 0 ? (
@@ -471,14 +471,14 @@ export function AIPanel({ collapsed, onToggle }: AIPanelProps) {
                 <div style={{ textAlign: 'center', paddingTop: 24 }}>
                   <Sparkles size={24} color="#e5e7eb" style={{ margin: '0 auto 12px' }} />
                   <p style={{ fontSize: 12, color: '#9ca3af', lineHeight: 1.7 }}>
-                    No active suggestions. Select a node to generate new ones.
+                    No active suggestions. Select an event to generate new ones.
                   </p>
                 </div>
               ) : (
                 <>
                   {selectedNodeId && (
                     <p style={{ fontSize: 11, color: '#9ca3af', marginBottom: 10 }}>
-                      Branch suggestions for the selected node:
+                      Branch suggestions for the selected event:
                     </p>
                   )}
                   {activeSuggestions.map((s) => (
@@ -515,7 +515,7 @@ export function AIPanel({ collapsed, onToggle }: AIPanelProps) {
                   {isLoading ? 'Running critique…' : 'Run critique'}
                 </button>
                 {nodes.length === 0 && (
-                  <p style={{ fontSize: 11, color: '#9ca3af', marginTop: 6 }}>Add some nodes to the canvas first.</p>
+                  <p style={{ fontSize: 11, color: '#9ca3af', marginTop: 6 }}>Add some events to the canvas first.</p>
                 )}
                 {narrativeOverview && (
                   <div style={{ marginTop: 14, background: '#faf5ff', borderRadius: 8, padding: 14 }}>

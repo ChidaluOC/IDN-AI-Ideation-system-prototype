@@ -130,7 +130,7 @@ export function PreviewModal({ onClose }: PreviewModalProps) {
                 }}
               >
                 {sceneNodes.length === 0 && (
-                  <div style={{ padding: '10px 12px', fontSize: 12, color: '#9ca3af' }}>No scene nodes yet</div>
+                  <div style={{ padding: '10px 12px', fontSize: 12, color: '#9ca3af' }}>No scene events yet</div>
                 )}
                 {sceneNodes.map((n) => (
                   <button
@@ -351,7 +351,7 @@ function SceneView({ node, navInfo, onNavigate }: SceneViewProps) {
         </div>
       ) : (
         <div style={{ fontSize: 13, color: '#d1d5db', fontStyle: 'italic', paddingTop: 8 }}>
-          No outgoing connections from this node.
+          No outgoing connections from this event.
         </div>
       )}
     </div>
@@ -362,7 +362,7 @@ function EmptyState() {
   return (
     <div style={{ textAlign: 'center', color: '#9ca3af', paddingTop: 60 }}>
       <div style={{ fontSize: 32, marginBottom: 12 }}>📖</div>
-      <p style={{ fontSize: 14 }}>No scene nodes found. Add some scenes to preview your story.</p>
+      <p style={{ fontSize: 14 }}>No scene events found. Add some scenes to preview your story.</p>
     </div>
   )
 }

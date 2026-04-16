@@ -3,22 +3,20 @@ import { Handle, Position, NodeResizer } from '@xyflow/react'
 import type { NodeType } from '../../types/graph'
 
 const TYPE_COLORS: Record<string, { bg: string; border: string; badge: string }> = {
-  intro:    { bg: '#fff7ed', border: '#f97316', badge: '#f97316' },
-  scene:    { bg: '#eff6ff', border: '#3b82f6', badge: '#3b82f6' },
-  choice:   { bg: '#fef9c3', border: '#ca8a04', badge: '#ca8a04' },
-  ending:   { bg: '#f0fdf4', border: '#16a34a', badge: '#16a34a' },
-  question: { bg: '#fdf4ff', border: '#9333ea', badge: '#9333ea' },
+  intro:  { bg: '#fff7ed', border: '#f97316', badge: '#f97316' },
+  scene:  { bg: '#eff6ff', border: '#3b82f6', badge: '#3b82f6' },
+  choice: { bg: '#fef9c3', border: '#ca8a04', badge: '#ca8a04' },
+  ending: { bg: '#f0fdf4', border: '#16a34a', badge: '#16a34a' },
   // 'note' kept for backward-compat with old saves
-  note:     { bg: '#f9fafb', border: '#6b7280', badge: '#6b7280' },
+  note:   { bg: '#f9fafb', border: '#6b7280', badge: '#6b7280' },
 }
 
 const TYPE_LABELS: Record<string, string> = {
-  intro: 'Intro',
-  scene: 'Scene',
+  intro:  'Intro',
+  scene:  'Scene',
   choice: 'Choice',
   ending: 'Ending',
-  question: 'Question',
-  note: 'Note',
+  note:   'Note',
 }
 
 interface StoryNodeProps {

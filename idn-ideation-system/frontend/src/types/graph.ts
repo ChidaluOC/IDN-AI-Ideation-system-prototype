@@ -1,4 +1,4 @@
-export type NodeType = 'intro' | 'scene' | 'choice' | 'ending' | 'question'
+export type NodeType = 'intro' | 'scene' | 'choice' | 'ending'
 export type NarrativeFormat = 'branching' | 'hypertext'
 
 export interface StoryChoice {

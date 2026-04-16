@@ -1,13 +1,12 @@
-import { Plus, Film, GitBranch, Flag, HelpCircle, Play, BarChart2, Sunrise } from 'lucide-react'
+import { Plus, Film, GitBranch, Flag, Play, BarChart2, Sunrise } from 'lucide-react'
 import { useGraphStore } from '../../store/graphStore'
 import type { NodeType } from '../../types/graph'
 
 const NODE_BUTTONS: { type: NodeType; label: string; icon: React.ReactNode; color: string }[] = [
-  { type: 'intro',    label: 'Intro',    icon: <Sunrise size={14} />,     color: '#f97316' },
-  { type: 'scene',    label: 'Scene',    icon: <Film size={14} />,        color: '#3b82f6' },
-  { type: 'choice',   label: 'Choice',   icon: <GitBranch size={14} />,   color: '#ca8a04' },
-  { type: 'ending',   label: 'Ending',   icon: <Flag size={14} />,        color: '#16a34a' },
-  { type: 'question', label: 'Question', icon: <HelpCircle size={14} />,  color: '#9333ea' },
+  { type: 'intro',  label: 'Intro',  icon: <Sunrise size={14} />,   color: '#f97316' },
+  { type: 'scene',  label: 'Scene',  icon: <Film size={14} />,      color: '#3b82f6' },
+  { type: 'choice', label: 'Choice', icon: <GitBranch size={14} />, color: '#ca8a04' },
+  { type: 'ending', label: 'Ending', icon: <Flag size={14} />,      color: '#16a34a' },
 ]
 
 interface GraphToolbarProps {
@@ -24,7 +23,7 @@ export function GraphToolbar({ onOpenPreview, onOpenTracking }: GraphToolbarProp
     if (type === 'intro') {
       const existing = nodes.find((n) => n.data.nodeType === 'intro')
       if (existing) {
-        alert('Only one Intro node is allowed. Your story can only have one beginning.')
+        alert('Only one Intro event is allowed. Your story can only have one beginning.')
         return
       }
     }
@@ -44,7 +43,7 @@ export function GraphToolbar({ onOpenPreview, onOpenTracking }: GraphToolbarProp
       }}
     >
       <span style={{ fontSize: 12, color: '#9ca3af', marginRight: 4, display: 'flex', alignItems: 'center', gap: 4 }}>
-        <Plus size={12} /> Add node:
+        <Plus size={12} /> Add event:
       </span>
 
       {NODE_BUTTONS.map(({ type, label, icon, color }) => (
@@ -67,7 +66,7 @@ export function GraphToolbar({ onOpenPreview, onOpenTracking }: GraphToolbarProp
           }}
           onMouseEnter={(e) => (e.currentTarget.style.background = color + '15')}
           onMouseLeave={(e) => (e.currentTarget.style.background = '#fff')}
-          title={`Add a ${label} node${type === 'intro' ? ' (only one allowed)' : ''}`}
+          title={`Add a ${label} event${type === 'intro' ? ' (only one allowed)' : ''}`}
         >
           {icon} {label}
         </button>
@@ -110,7 +109,7 @@ export function GraphToolbar({ onOpenPreview, onOpenTracking }: GraphToolbarProp
       </button>
 
       <span style={{ marginLeft: 'auto', fontSize: 11, color: '#d1d5db' }}>
-        Click nodes to select · Drag handles to connect
+        Click events to select · Drag handles to connect
       </span>
     </div>
   )
